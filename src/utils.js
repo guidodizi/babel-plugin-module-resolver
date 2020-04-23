@@ -25,6 +25,19 @@ export function toLocalPath(modulePath) {
   return localPath;
 }
 
+export function hasExtension(modulePath, extensions) {
+  if (extensions) {
+    const name = path.basename(modulePath);
+    return extensions.some(extension => {
+      if (name.endsWith(extension)) {
+        return true;
+      }
+      return false;
+    });
+  }
+  return false;
+}
+
 export function stripExtension(modulePath, stripExtensions) {
   let name = path.basename(modulePath);
   stripExtensions.some(extension => {
